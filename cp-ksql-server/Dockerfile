@@ -17,6 +17,10 @@ LABEL io.confluent.docker=true
 ARG PROJECT_VERSION=5.0.0-SNAPSHOT
 ARG ARTIFACT_ID=cp-ksql-server
 
+RUN wget -q https://packages.confluent.io/archive/5.0/confluent-oss-${DOCKER_UPSTREAM_TAG}-2.11.tar.gz \
+    && tar xzvf confluent-oss-${DOCKER_UPSTREAM_TAG}-2.11.tar.gz --strip-components 1 \
+    && rm confluent-oss-${DOCKER_UPSTREAM_TAG}-2.11.tar.gz
+
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/java/${ARTIFACT_ID}/* /usr/share/java/${COMPONENT}/
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/doc/* /usr/share/doc/${ARTIFACT_ID}/
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/bin/* /usr/bin/
