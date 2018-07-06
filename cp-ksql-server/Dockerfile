@@ -1,5 +1,5 @@
 ARG DOCKER_UPSTREAM_REGISTRY=
-ARG DOCKER_UPSTREAM_TAG=latest
+ARG DOCKER_UPSTREAM_TAG=5.1.0-SNAPSHOT
 
 FROM ${DOCKER_UPSTREAM_REGISTRY}confluentinc/cp-base:${DOCKER_UPSTREAM_TAG}
 
@@ -16,6 +16,8 @@ LABEL io.confluent.docker=true
 
 ARG PROJECT_VERSION=5.1.0
 ARG ARTIFACT_ID=cp-ksql-cli
+
+RUN ls -ll target
 
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/java/${ARTIFACT_ID}/* /usr/share/java/${COMPONENT}/
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/doc/* /usr/share/doc/${ARTIFACT_ID}/
