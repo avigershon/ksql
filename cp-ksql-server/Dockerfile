@@ -8,16 +8,15 @@ EXPOSE 8088
 ENV COMPONENT=ksql-server
 ENV KSQL_CLASSPATH=/usr/share/java/${COMPONENT}/*
 
-ARG COMMIT_ID=unknown
+ARG COMMIT_ID=ce7c6825b97d6db39377bebb0f316346a5121fb2
 LABEL io.confluent.docker.git.id=$COMMIT_ID
-ARG BUILD_NUMBER=-1
+ARG BUILD_NUMBER=180702222458
 LABEL io.confluent.docker.build.number=$BUILD_NUMBER
 LABEL io.confluent.docker=true
 
-ARG PROJECT_VERSION=5.1.0
+ARG PROJECT_VERSION=5.0.0-beta
 ARG ARTIFACT_ID=cp-ksql-server
 
-RUN find / -name *.jar
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/java/${ARTIFACT_ID}/* /usr/share/java/${COMPONENT}/
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/doc/* /usr/share/doc/${ARTIFACT_ID}/
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/bin/* /usr/bin/
