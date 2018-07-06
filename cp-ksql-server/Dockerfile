@@ -14,8 +14,8 @@ ARG BUILD_NUMBER=-1
 LABEL io.confluent.docker.build.number=$BUILD_NUMBER
 LABEL io.confluent.docker=true
 
-ARG PROJECT_VERSION
-ARG ARTIFACT_ID
+ARG PROJECT_VERSION=5.1.0
+ARG ARTIFACT_ID=cp-ksql-cli
 
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/java/${ARTIFACT_ID}/* /usr/share/java/${COMPONENT}/
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/doc/* /usr/share/doc/${ARTIFACT_ID}/
