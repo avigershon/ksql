@@ -14,12 +14,8 @@ ARG BUILD_NUMBER=180702222458
 LABEL io.confluent.docker.build.number=$BUILD_NUMBER
 LABEL io.confluent.docker=true
 
-ARG PROJECT_VERSION=5.0.0-SNAPSHOT
+ARG PROJECT_VERSION=5.0.0-beta
 ARG ARTIFACT_ID=cp-ksql-server
-
-RUN wget -q https://packages.confluent.io/archive/5.0/confluent-oss-5.0.0-beta1-2.11.tar.gz \
-    && tar xzvf confluent-oss-5.0.0-beta1-2.11.tar.gz --strip-components 1 \
-    && rm confluent-oss-5.0.0-beta1-2.11.tar.gz
 
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/java/${ARTIFACT_ID}/* /usr/share/java/${COMPONENT}/
 ADD target/${ARTIFACT_ID}-${PROJECT_VERSION}-package/share/doc/* /usr/share/doc/${ARTIFACT_ID}/
