@@ -17,6 +17,6 @@ RUN apt-get install -y git
 RUN apt-get install -y maven
 
 RUN git clone https://github.com/confluentinc/ksql.git
-RUN cd ksql
+RUN cd ksql/cp-ksql-server
 
 RUN mvn package -X -DskipTests
