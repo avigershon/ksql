@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM maven:alpine
 
 RUN git clone https://github.com/confluentinc/ksql.git
 RUN cd ksql
